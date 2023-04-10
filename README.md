@@ -10,6 +10,7 @@
 ----
 ### Spotify client setup:
 1 - Create a app on [Spotify for Developers](https://developer.spotify.com)
+
 2 - Copy your _client_id_ and _client_secret_.
 3 - Paste the keys in the _.env_ file.
 4 - From your Spotify account, copy your _username_ or _user_id_.
