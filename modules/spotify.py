@@ -3,6 +3,7 @@ import os
 import base64
 import requests
 import json
+from typing import List, Dict
 
 
 class Spotify:
@@ -26,7 +27,7 @@ class Spotify:
         self.token = json_result["access_token"]
         self.auth_header = {"Authorization": "Bearer " + self.token}
 
-    async def get_user_playlist_data(self, username):
+    async def get_user_playlist_data(self, username: str) -> List[Dict[str, str]]:
         url = f'https://api.spotify.com/v1/users/{username}/playlists'
         headers = self.auth_header
 
@@ -46,7 +47,7 @@ class Spotify:
         print('Spotify - Found playlist')
         return result
 
-    async def get_playlist_data_by_id(self, playlist_id):
+    async def get_playlist_data_by_id(self, playlist_id: str) -> List[Dict[str, str]]:
         url = f'https://api.spotify.com/v1/playlists/{playlist_id}'
         headers = self.auth_header
 
@@ -77,7 +78,7 @@ class Spotify:
         print('Spotify - Got playlist data')
         return result
 
-    async def get_playlist_id(self, s_username: str, s_playlist_from: str):
+    async def get_playlist_id(self, s_username: str, s_playlist_from: str) -> str:
         playlists = await self.get_user_playlist_data(s_username)
 
         for p in playlists:

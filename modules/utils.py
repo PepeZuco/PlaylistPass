@@ -5,7 +5,7 @@ import re
 class Utils:
 
     @staticmethod
-    async def find_most_compatible_result(yt_search_results, s_track):
+    async def find_most_compatible_result(yt_search_results: list, s_track: dict) -> str:
         pattern = r'\([^)]*\)'
         s_track_name = s_track['name']
         s_artists = " ".join([a['name'].strip() for a in s_track['artists']]) if s_track['artists'] else ''

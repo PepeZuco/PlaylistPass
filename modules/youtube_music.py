@@ -1,6 +1,7 @@
 import os
 import googleapiclient.discovery
 from ytmusicapi import YTMusic
+from typing import List, Dict
 
 
 class YoutubeMusic:
@@ -13,7 +14,7 @@ class YoutubeMusic:
         self.youtube = googleapiclient.discovery.build(api_service_name, api_version, developerKey=DEVELOPER_KEY)
         self.ytmusic = YTMusic('auth/browser.json')
 
-    async def get_user_playlist_data(self, channelId):
+    async def get_user_playlist_data(self, channelId: str) -> List[Dict[str, str]]:
 
         request = self.youtube.playlists().list(
             part="snippet,contentDetails",
@@ -35,7 +36,7 @@ class YoutubeMusic:
         print('YoutubeMusic - Found playlist')
         return result
 
-    async def get_playlist_by_id(self, playlist_id):
+    async def get_playlist_by_id(self, playlist_id: str) -> List[Dict[str, str]]:
         request = self.youtube.playlistItems().list(
             part="snippet,contentDetails",
             maxResults=100,
@@ -57,18 +58,18 @@ class YoutubeMusic:
         print('YoutubeMusic - Got playlist data')
         return result
 
-    async def create_playlist(self, name, description):
+    async def create_playlist(self, name: str, description: str) -> List[Dict[str, str]]:
         request = self.ytmusic.create_playlist(name, description)
         print('---------------------------------')
         print('YoutubeMusic - Created YoutubeMusic playlist')
         return request
 
-    async def add_song_to_playlist(self, playlist, track_id):
+    async def add_song_to_playlist(self, playlist: str, track_id: str) -> List[Dict[str, str]]:
         print('---------------------------------')
         self.ytmusic.add_playlist_items(playlist, track_id)
         print('YoutubeMusic - Added songs to playlist')
 
-    async def search_tracks(self, s_tracks):
+    async def search_tracks(self, s_tracks: dict) -> List[Dict]:
 
         track_name = s_tracks['name']
         track_album = s_tracks['album']['name']

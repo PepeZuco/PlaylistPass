@@ -7,10 +7,10 @@ sp = Spotify()
 ytm = YoutubeMusic()
 
 
-async def spotify_to_youtube_music_async(s_usrename,
-                                         s_playlist_from,
-                                         yt_new_playlist_name,
-                                         yt_new_playlist_description):
+async def spotify_to_youtube_music_async(s_usrename: str,
+                                         s_playlist_from: str,
+                                         yt_new_playlist_name: str,
+                                         yt_new_playlist_description: str) -> str:
     s_playlist_id = await sp.get_playlist_id(s_usrename, s_playlist_from)
     s_tracks = await sp.get_playlist_data_by_id(s_playlist_id)
     yt_playlist_id = await ytm.create_playlist(yt_new_playlist_name, yt_new_playlist_description)
