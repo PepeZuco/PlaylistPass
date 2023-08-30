@@ -2,7 +2,7 @@
 ---
 
 - Creator: João Pedro Longo Zucoloto
-- [Email](joaozuco@gmail.com)
+- Email: joaozuco@gmail.com
 - [LinkedIn](https://www.linkedin.com/in/jo%C3%A3o-pedro-longo-zucoloto-169638182/)
 
 ---
