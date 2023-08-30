@@ -31,8 +31,8 @@ async def spotify_to_youtube_music_async(s_usrename,
 
 async def main():
     try:
-        SPOTIFY_USERNAME = 'onabxz44ne97mhbpwww1n533k'
-        SPOTIFY_PLAYLIST_FROM = 'Cerimônia J&J'
+        SPOTIFY_USERNAME = 'SPOTIFY_USERNAME'
+        SPOTIFY_PLAYLIST_FROM = 'SPOTIFY_PLAYLIST_FROM'
         YOUTUBE_MUSIC_NEW_PLAYLIST_NAME = 'YOUTUBE_MUSIC_NEW_PLAYLIST_NAME'
         YOUTUBE_MUSIC_NEW_PLAYLIST_DESCRIPTION = 'YOUTUBE_MUSIC_NEW_PLAYLIST_DESCRIPTION'
         playlist_id = await spotify_to_youtube_music_async(s_usrename=SPOTIFY_USERNAME,
