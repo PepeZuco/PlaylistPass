@@ -32,7 +32,6 @@ class Spotify:
         headers = self.auth_header
 
         r = requests.get(url, headers=headers)
-        print('---------------------------------')
         print('Spotify - Searching playlists')
         json_result = json.loads(r.content)
 
@@ -52,7 +51,6 @@ class Spotify:
         headers = self.auth_header
 
         r = requests.get(url, headers=headers)
-        print('---------------------------------')
         print('Spotify - Getting playlist data')
         json_result = json.loads(r.content)
 

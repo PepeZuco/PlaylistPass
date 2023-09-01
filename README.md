@@ -17,8 +17,7 @@
 2. Copy your _client_id_ and _client_secret_.
 3. Paste the keys in the _.env_ file.
 4. From your Spotify account, copy your _username_ or _user_id_.
-5. Paste the _username_ or _user_id_ on line 34 in the "run.py" file
-6. The code will then generate a valid token with every run.
+5. The code will then generate a valid token with every run.
 
 ### YouTube Headers Setup:
 1. Go to [YoutubeMusic](https://music.youtube.com/library).
@@ -30,5 +29,4 @@
 
 ### Running the Code
 1. Open the file run.py.
-2. Write your Spotify username on line 30.
-3. Write the playlist you want to copy on line 31.
+2 . Follow THE instructions

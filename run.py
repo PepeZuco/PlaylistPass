@@ -1,47 +1,31 @@
 import asyncio
-from modules.spotify import Spotify
-from modules.youtube_music import YoutubeMusic
-from modules.utils import Utils
-
-sp = Spotify()
-ytm = YoutubeMusic()
-
-
-async def spotify_to_youtube_music_async(s_usrename: str,
-                                         s_playlist_from: str,
-                                         yt_new_playlist_name: str,
-                                         yt_new_playlist_description: str) -> str:
-    s_playlist_id = await sp.get_playlist_id(s_usrename, s_playlist_from)
-    s_tracks = await sp.get_playlist_data_by_id(s_playlist_id)
-    yt_playlist_id = await ytm.create_playlist(yt_new_playlist_name, yt_new_playlist_description)
-    yt_tracks_to_be_added = []
-
-    tasks = []
-
-    for s_track in s_tracks:
-        yt_search_results = await ytm.search_tracks(s_track)
-        task = asyncio.create_task(Utils.find_most_compatible_result(yt_search_results, s_track))
-        tasks.append(task)
-
-    yt_tracks_to_be_added = await asyncio.gather(*tasks)
-
-    await ytm.add_song_to_playlist(yt_playlist_id, yt_tracks_to_be_added)
-    return yt_playlist_id
+from modules.tools import Tools
 
 
 async def main():
     try:
-        SPOTIFY_USERNAME = 'SPOTIFY_USERNAME'
-        SPOTIFY_PLAYLIST_FROM = 'SPOTIFY_PLAYLIST_FROM'
-        YOUTUBE_MUSIC_NEW_PLAYLIST_NAME = 'YOUTUBE_MUSIC_NEW_PLAYLIST_NAME'
-        YOUTUBE_MUSIC_NEW_PLAYLIST_DESCRIPTION = 'YOUTUBE_MUSIC_NEW_PLAYLIST_DESCRIPTION'
-        playlist_id = await spotify_to_youtube_music_async(s_usrename=SPOTIFY_USERNAME,
-                                                           s_playlist_from=SPOTIFY_PLAYLIST_FROM,
-                                                           yt_new_playlist_name=YOUTUBE_MUSIC_NEW_PLAYLIST_NAME,
-                                                           yt_new_playlist_description=YOUTUBE_MUSIC_NEW_PLAYLIST_DESCRIPTION)
-        print('-' * (len(playlist_id) + 5))
-        print(f'https://music.youtube.com/playlist?list={playlist_id}')
-        print('-' * (len(playlist_id) + 5))
+
+        # ========================================================================================================
+        # Transfer spotify playlist to Youtube Music.
+        # tools = Tools()
+        # SPOTIFY_USERNAME = 'USERNAME'
+        # SPOTIFY_PLAYLIST_FROM = 'PLAYLIST_FROM'
+        # YOUTUBE_MUSIC_NEW_PLAYLIST_NAME = 'YOUTUBE_MUSIC_NEW_PLAYLIST_NAME'
+        # YOUTUBE_MUSIC_NEW_PLAYLIST_DESCRIPTION = 'YOUTUBE_MUSIC_NEW_PLAYLIST_DESCRIPTION'
+        # await tools.spotify_to_youtube_music(s_usrename=SPOTIFY_USERNAME,
+        #                                      s_playlist_from=SPOTIFY_PLAYLIST_FROM,
+        #                                      yt_new_playlist_name=YOUTUBE_MUSIC_NEW_PLAYLIST_NAME,
+        #                                      yt_new_playlist_description=YOUTUBE_MUSIC_NEW_PLAYLIST_DESCRIPTION)
+        # =========================================================================================================
+
+        # =========================================================================================================
+        # Create Playlist based on most frequent songs.
+        # tools = Tools()
+        # CHANNEL_ID = 'YOUR_CHANNEL_ID'
+        # await tools.create_playlist_youtube_music_most_current_tracks_in_playlists(channel_id=CHANNEL_ID,
+        #                                                                            number_of_most_frequent_songs=50)
+        # =========================================================================================================
+        pass
     except Exception as e:
         print(e)
 

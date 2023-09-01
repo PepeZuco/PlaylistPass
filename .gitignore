@@ -1,1 +1,5 @@
 quick.ipynb
+auth/browser.json
+.env
+modules/__pycache__/
+*.pyc
